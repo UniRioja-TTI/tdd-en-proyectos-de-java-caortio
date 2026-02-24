@@ -4,47 +4,49 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ToDo implements Serializable {
-	private String nombre;
-	private String descripcion;
-	private Date fechaLimite;
-	private boolean completado;
-	
-	public ToDo (){	}
-	
-	public ToDo (String nombre, String descripcion, Date fecha, boolean completado)
-	{
-		throw new UnsupportedOperationException("Clase aún no implementada.");
-	}
+    private String nombre;
+    private String descripcion;
+    private Date fechaLimite;
+    private boolean completado;
 
-	public String getNombre() {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
-	}
+    // Constructor
+    public ToDo (String nombre, String descripcion, Date fechaLimite, boolean completado) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaLimite = fechaLimite;
+        this.completado = completado;
+    }
 
-	public void setNombre(String nombre) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
-	}
+    // Getters y Setters
+    public String getNombre() {
+        return nombre;
+    }
 
-	public String getDescripcion() {
-		throw new UnsupportedOperationException("Clase aún no implementada.");	
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setDescripcion(String descripcion) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public Date getFechaLimite() {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public void setFechaLimite(Date fechaLimite) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
-	}
+    public Date getFechaLimite() {
+        return fechaLimite;
+    }
 
-	public boolean isCompletado() {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
-	}
+    public void setFechaLimite(Date fechaLimite) {
+        this.fechaLimite = fechaLimite;
+    }
 
-	public void setCompletado(boolean completado) {
-		throw new UnsupportedOperationException("Clase aún no implementada.");
-	}	
+    public boolean isCompletado() {
+        return completado;
+    }
+
+    public void setCompletado(boolean completado) {
+        this.completado = completado;
+    }
 }

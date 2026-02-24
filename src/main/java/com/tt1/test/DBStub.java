@@ -5,45 +5,57 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DBStub 
-{
-	private List<ToDo> toDoList;
+public class DBStub {
+    private List<ToDo> toDoList;
     private Set<String> emailAgenda;
 
     public DBStub() {
-        this.setToDoList(new ArrayList<>());
+        this.toDoList = new ArrayList<>();
         this.emailAgenda = new HashSet<>();
     }
 
     public void addTask(ToDo task) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        toDoList.add(task);
     }
 
     public ToDo findTaskById(int id) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        if (id >= 0 && id < toDoList.size()) {
+            return toDoList.get(id);
+        }
+        return null; // Tarea no encontrada
     }
 
     public List<ToDo> getIncompleteTasks() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        List<ToDo> incompleteTasks = new ArrayList<>();
+        for (ToDo todo : toDoList) {
+            if (!todo.isCompletado()) {
+                incompleteTasks.add(todo);
+            }
+        }
+        return incompleteTasks;
     }
 
     public boolean markTaskAsCompleted(ToDo todo) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        if (toDoList.contains(todo)) {
+            todo.setCompletado(true);
+            return true;
+        }
+        return false;
     }
 
     public boolean addEmail(String email) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return emailAgenda.add(email);
     }
 
     public Set<String> getEmailAgenda() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return emailAgenda;
     }
 
-	public List<ToDo> getToDoList() {
-		return toDoList;
-	}
+    public List<ToDo> getToDoList() {
+        return toDoList;
+    }
 
-	public void setToDoList(List<ToDo> toDoList) {
-		this.toDoList = toDoList;
-	}
+    public void setToDoList(List<ToDo> toDoList) {
+        this.toDoList = toDoList;
+    }
 }

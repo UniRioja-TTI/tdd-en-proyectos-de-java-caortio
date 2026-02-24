@@ -3,29 +3,32 @@ package com.tt1.test;
 import java.util.List;
 
 public class Repositorio {
-	private DBStub dbStub;
+    private DBStub dbStub;
 
     public Repositorio(DBStub dbStub) {
         this.dbStub = dbStub;
     }
 
     public void storeTask(ToDo task) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        dbStub.addTask(task);
     }
 
     public void storeEmail(String email) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        dbStub.addEmail(email);
     }
 
     public ToDo getTaskById(int id) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return dbStub.findTaskById(id);
     }
 
     public void markTaskCompleted(int id) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        ToDo task = dbStub.findTaskById(id);
+        if (task != null) {
+            dbStub.markTaskAsCompleted(task);
+        }
     }
 
     public List<ToDo> getIncompleteTasks() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        return dbStub.getIncompleteTasks();
     }
 }

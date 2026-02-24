@@ -12,22 +12,24 @@ public class Servicio {
     }
 
     public void addTask(String taskName, String dueDate) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        // Lógica para agregar tareas (deberías implementarlo)
     }
 
     public void addEmail(String email) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        // Lógica para agregar el email a la agenda en DBStub
+        repositorio.storeEmail(email);
     }
 
     public void markTaskAsCompleted(int taskId) {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        // Lógica para marcar tarea como completada (deberías implementarlo)
     }
 
     public List<ToDo> getIncompleteTasks() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        // Lógica para obtener tareas incompletas (deberías implementarlo)
+        return null;
     }
 
     public void checkForOverdueTasks() {
-        throw new UnsupportedOperationException("Clase aún no implementada.");
+        // Lógica para verificar tareas vencidas (deberías implementarlo)
     }
 }
