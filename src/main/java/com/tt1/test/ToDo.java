@@ -46,7 +46,8 @@ public class ToDo implements Serializable {
         return completado;
     }
 
-    public void setCompletado(boolean completado) {
-        this.completado = completado;
-    }
+	public void setCompletado(boolean b) {
+		this.completado = b;	
+	}
+
 }

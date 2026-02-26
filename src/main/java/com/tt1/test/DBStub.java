@@ -35,14 +35,6 @@ public class DBStub {
         return incompleteTasks;
     }
 
-    public boolean markTaskAsCompleted(ToDo todo) {
-        if (toDoList.contains(todo)) {
-            todo.setCompletado(true);
-            return true;
-        }
-        return false;
-    }
-
     public boolean addEmail(String email) {
         return emailAgenda.add(email);
     }
@@ -51,11 +43,15 @@ public class DBStub {
         return emailAgenda;
     }
 
+    public void markTaskAsCompleted(int index) {
+        ToDo task = findTaskById(index);
+        if (task != null) {
+            task.setCompletado(true);
+        }
+    }
+    
     public List<ToDo> getToDoList() {
         return toDoList;
     }
 
-    public void setToDoList(List<ToDo> toDoList) {
-        this.toDoList = toDoList;
-    }
 }

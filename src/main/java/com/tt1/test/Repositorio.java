@@ -1,6 +1,7 @@
 package com.tt1.test;
 
 import java.util.List;
+import java.util.Set;
 
 public class Repositorio {
     private DBStub dbStub;
@@ -21,14 +22,18 @@ public class Repositorio {
         return dbStub.findTaskById(id);
     }
 
-    public void markTaskCompleted(int id) {
-        ToDo task = dbStub.findTaskById(id);
-        if (task != null) {
-            dbStub.markTaskAsCompleted(task);
-        }
+    // Marca tarea como completada
+    public void markTaskCompleted(int index) {
+        dbStub.markTaskAsCompleted(index);
     }
-
+    
+    // Obtiene tareas incompletas
     public List<ToDo> getIncompleteTasks() {
         return dbStub.getIncompleteTasks();
+    }
+
+    // Obtiene la agenda de emails
+    public Set<String> getEmailAgenda() {
+        return dbStub.getEmailAgenda();
     }
 }

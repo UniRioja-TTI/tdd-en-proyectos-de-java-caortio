@@ -41,7 +41,7 @@ public class RepositorioTest {
         repositorio.storeTask(task2);
 
         // Act: Buscamos una tarea por ID
-        ToDo foundTask = repositorio.getTaskById(1); 
+        ToDo foundTask = repositorio.getTaskById(0); 
 
         // Assert: Verificamos que la tarea encontrada sea la correcta
         assertNotNull(foundTask);
@@ -70,7 +70,7 @@ public class RepositorioTest {
         repositorio.storeTask(task1);
 
         // Act: Marcamos la tarea como completada
-        repositorio.markTaskCompleted(1);
+        repositorio.markTaskCompleted(0);
 
         // Assert: Verificamos que la tarea fue marcada como completada
         assertTrue(task1.isCompletado());

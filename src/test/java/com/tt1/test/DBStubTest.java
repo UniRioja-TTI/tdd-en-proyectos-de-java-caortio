@@ -37,12 +37,12 @@ class DBStubTest {
 
     @Test
     void testFindTaskById() {
-        // Act: Añadir la tarea y buscarla por ID (suponiendo que la ID es su posición en la lista)
+        // Act: Añadir la tarea y buscarla por ID (índice)
         dbStub.addTask(todo1);
         dbStub.addTask(todo2);
         
         // Aquí implementamos el test asumiendo que ID está basado en el índice
-        ToDo foundTask = dbStub.findTaskById(0); 
+        ToDo foundTask = dbStub.findTaskById(0); // Buscamos por índice (0 para la primera tarea)
 
         // Assert: Verificar que la tarea encontrada sea la correcta
         assertEquals(todo1, foundTask, "La tarea encontrada no es la correcta.");
@@ -65,13 +65,14 @@ class DBStubTest {
 
     @Test
     void testMarkTaskAsCompleted() {
-        // Act: Agregar tarea y marcarla como completada
+        // Arrange: Agregar tarea al DBStub
         dbStub.addTask(todo1);
-        boolean result = dbStub.markTaskAsCompleted(todo1);
+
+        // Act: Marcar la tarea como completada, pasando el índice de la tarea (en este caso, 0)
+        dbStub.markTaskAsCompleted(0);  // Usamos el índice 0, ya que es la primera tarea en la lista
 
         // Assert: Verificar que la tarea se haya marcado correctamente como completada
-        assertTrue(result, "La tarea no fue marcada como completada.");
-        assertTrue(todo1.isCompletado(), "La tarea no está marcada como completada.");
+        assertTrue(todo1.isCompletado(), "La tarea no fue marcada como completada.");
     }
 
     @Test

@@ -1,8 +1,11 @@
 package com.tt1.test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class Servicio {
+
     private Repositorio repositorio;
     private MailerStub mailerStub;
 
@@ -11,25 +14,51 @@ public class Servicio {
         this.mailerStub = mailerStub;
     }
 
-    public void addTask(String taskName, String dueDate) {
-        // Lógica para agregar tareas (deberías implementarlo)
+    // Crear un ToDo
+    public void addTask(String nombre, String fechaLimite) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date fecha = sdf.parse(fechaLimite);  // Convertimos el string a Date
+            ToDo task = new ToDo(nombre, "Descripción de la tarea", fecha, false);
+            repositorio.storeTask(task);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    // Agregar un email a la agenda
     public void addEmail(String email) {
-        // Lógica para agregar el email a la agenda en DBStub
         repositorio.storeEmail(email);
     }
 
-    public void markTaskAsCompleted(int taskId) {
-        // Lógica para marcar tarea como completada (deberías implementarlo)
+    // Marcar una tarea como completada
+    public void markTaskAsCompleted(int index) {
+        repositorio.markTaskCompleted(index);
     }
 
-    public List<ToDo> getIncompleteTasks() {
-        // Lógica para obtener tareas incompletas (deberías implementarlo)
-        return null;
+    // Consultar todas las tareas incompletas
+    public void checkIncompleteTasks() {
+        List<ToDo> incompleteTasks = repositorio.getIncompleteTasks();
+        if (incompleteTasks.isEmpty()) {
+            System.out.println("No hay tareas incompletas.");
+        } else {
+            for (ToDo task : incompleteTasks) {
+                System.out.println("Tarea incompleta: " + task.getNombre());
+            }
+        }
     }
 
+    // Revisar tareas vencidas y enviar alertas por correo
     public void checkForOverdueTasks() {
-        // Lógica para verificar tareas vencidas (deberías implementarlo)
+        List<ToDo> tasks = repositorio.getIncompleteTasks();
+        Date currentDate = new Date();
+        for (ToDo task : tasks) {
+            if (task.getFechaLimite().before(currentDate)) {
+                // Enviar correo de alerta a todas las direcciones de la agenda
+                for (String email : repositorio.getEmailAgenda()) {
+                    mailerStub.sendEmail(email, "Alerta: La tarea '" + task.getNombre() + "' ha vencido.");
+                }
+            }
+        }
     }
 }

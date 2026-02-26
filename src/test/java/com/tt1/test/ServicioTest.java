@@ -55,10 +55,13 @@ public class ServicioTest {
         repositorio.storeTask(task1);
 
         // Act: Marcar la tarea como completada
-        servicio.markTaskAsCompleted(1);
+        servicio.markTaskAsCompleted(0);
+        
+        // Act: Buscamos la tarea directamente en el repositorio
+        ToDo foundTask = repositorio.getTaskById(0);
 
         // Assert: Verificar que la tarea está marcada como completada
-        assertTrue(task1.isCompletado(), "La tarea no fue marcada como completada.");
+        assertTrue(foundTask.isCompletado(), "La tarea no fue marcada como completada.");
     }
 
     @Test

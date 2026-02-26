@@ -1,4 +1,4 @@
-package com.tt1.test;
+package com.tt1.mock;
 
 import static org.junit.jupiter.api.Assertions.*;
 
